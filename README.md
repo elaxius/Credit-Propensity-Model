@@ -35,42 +35,30 @@ The dataset consists of the following:
 - Evaluate models using **AUROC**.
 
 ### **3. Predict Expected Revenue**
-- Train **three Linear Regression models** to predict revenue (`Revenue_*`).
+- Train **three CatBoost models** to predict revenue (`Revenue_*`).
 - Revenue models are trained **only on clients who have purchased the product**.
 
 ### **4. Optimize Target Selection**
-- Compute **expected revenue**:  
+- Compute **expected revenue** for each product for each client:  
   $$\text{Expected Revenue} = P(\text{purchase}) \times \text{Predicted Revenue}$$
-- Rank clients by **highest expected revenue**.
-- Select **top 15%** of clients and assign them the offer with the **highest expected revenue**.
+- Rank clients by **highest expected revenue** across all 3 products.
+- Select **top 100** clients and assign them the offer with the **highest expected revenue** and corresponding product.
 
 ---
 
-## 🚀 How to Run the Project
+## 🚀 Project Files
 
-### **1️⃣ Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
+### **1️⃣ model development.ipynb**
+- Model development Notebook, used to train and evaluate models
 
-### **2️⃣ Run the Data Processing & Modeling Pipeline**
-```bash
-python train_models.py
-```
-
-### **3️⃣ Generate the Final Target List**
-```bash
-python select_clients.py
-```
-
-### **4️⃣ View Results**
-Check the `results/selected_clients.csv` file for the final targeted client list.
+### **2️⃣ model inference.ipynb**
+- Model inference notebook, used for prediction and generating customer list and expected revenue.
 
 ---
 
 ## 📈 Evaluation Metrics
 - **Propensity Model Performance**: AUROC Score
-- **Revenue Model Performance**: RMSE
+- **Revenue Model Performance**: MAPE
 - **Marketing Optimization**: Total expected revenue
 
 ---
@@ -81,13 +69,6 @@ Check the `results/selected_clients.csv` file for the final targeted client list
 - **Version Control**: Git & GitHub
 ---
 
-## 💡 Future Improvements
-- Use **XGBoost** or **Neural Networks** for better revenue prediction.
-- Implement **multi-objective optimization** to balance revenue and client fairness.
-- Deploy as an AWS sagemaker endpoint for real-time scoring.
-- Add pytests for prodcuction unit code testing for any merges. 
-  
----
 
 ### 🌟 If you find this project useful, give it a ⭐ on GitHub!
 
