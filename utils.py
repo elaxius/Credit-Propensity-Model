@@ -77,9 +77,9 @@ def train_regressor(X_train, y_train):
 
     # Define the hyperparameters to search over
     param_grid = {
-        'depth': [4, 6, 8, 10],
-        'learning_rate': [0.01, 0.05, 0.1, 0.2],
-        'iterations': [50, 100, 200, 500]
+        'depth': [3, 4, 6, 8, 10],
+        'learning_rate': [0.005, 0.01, 0.05, 0.1, 0.2],
+        'iterations': [20, 50, 100, 200, 500, 1000]
     }
 
     # Set up GridSearchCV for cross-validation
